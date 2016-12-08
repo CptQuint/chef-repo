@@ -27,7 +27,7 @@ end
 
 execute 'cert_gen' do
   cwd  '/etc/pki/tls'
-  command "/usr/bin/openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/fqdn #{node[:fqdn]}.key -out certs/fqdn #{node[:fqdn]}.crt"
+  command "/usr/bin/openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/#{node[:fqdn]}.key -out certs/#{node[:fqdn]}.crt"
 end
 
 template "02-beats-input.conf" do
