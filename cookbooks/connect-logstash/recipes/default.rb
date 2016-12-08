@@ -8,6 +8,7 @@
 #
 
 include_recipe "yum"
+include_recipe "java::oracle"
 
 # add the Logstash repository
 yum_repository 'logstash' do
