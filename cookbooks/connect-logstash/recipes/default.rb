@@ -12,9 +12,9 @@ include_recipe "java::oracle"
 
 # add the Logstash repository
 yum_repository 'logstash' do
-  description "Logstash repository for 2.2 packages"
-  baseurl "http://packages.elasticsearch.org/logstash/2.2/centos"
-  gpgkey 'http://packages.elasticsearch.org/GPG-KEY-elasticsearch'
+  description "Logstash repository for 5.x packages"
+  baseurl "https://artifacts.elastic.co/packages/5.x/yum"
+  gpgkey 'https://artifacts.elastic.co/GPG-KEY-elasticsearch'
   action :create
 end
 
