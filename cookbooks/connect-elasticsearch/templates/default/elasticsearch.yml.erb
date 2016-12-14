@@ -1,0 +1,12 @@
+cluster:
+	name: logstash
+	
+node:
+	name: <%= node[:fqdn] %>
+	
+path:
+	date: /usr/share/elasticsearch/date/<%= node[:hostname] %>
+	
+threadpool:
+	bulk:
+		queue_size: 3000
