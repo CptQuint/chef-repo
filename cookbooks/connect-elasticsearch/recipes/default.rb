@@ -10,7 +10,7 @@
 include_recipe "yum"
 include_recipe "java::oracle"
 
-cluster_nodes = '["' + search(:node, 'role:elasticsearch_server').map(&:ipaddress).sort.uniq.join('", "') + '"]'
+cluster_nodes = '["' + search(:node, 'role:elasticsearch_server').map(&:fqdn).sort.uniq.join('", "') + '"]'
 
 # add the Elasticsearch repository
 yum_repository 'elasticsearch' do
