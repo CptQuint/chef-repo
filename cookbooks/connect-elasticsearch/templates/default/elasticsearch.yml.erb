@@ -5,8 +5,10 @@ node:
 	name: <%= node[:fqdn] %>
 	
 path:
-	date: /usr/share/elasticsearch/date/<%= node[:hostname] %>
+	data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
 	
 threadpool:
 	bulk:
 		queue_size: 3000
+
+discovery.zen.ping.unicast.hosts: <%= @cluster_nodes %>

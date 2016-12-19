@@ -10,6 +10,8 @@
 include_recipe "yum"
 include_recipe "java::oracle"
 
+cluster_nodes = '["' + search(:node, 'role:elasticsearch_server').map(&:ipaddress).sort.uniq.join('", "') + '"]'
+
 # add the Elasticsearch repository
 yum_repository 'elasticsearch' do
   description "Elasticsearch repository for 5.x packages"
@@ -26,17 +28,20 @@ service 'elasticsearch' do
   action [ :enable, :start ]
 end
 
-es_node_config_dir = "/etc/elasticsearch/#{node[:hostname]}"
+#es_node_config_dir = "/etc/elasticsearch/#{node[:hostname]}"
 
-directory es_node_config_dir do
-  owner "elasticsearch"
-  group "elasticsearch"
-  mode "0755"
-  recursive true
-end
+#directory es_node_config_dir do
+#  owner "elasticsearch"
+#  group "elasticsearch"
+#  mode "0755"
+#  recursive true
+#end
 
 template "elasticsearch.yml" do
-  path "/etc/elasticsearch/#{node[:hostname]}/elasticsearch.yml"
+  variables(
+    'cluster_nodes': cluster_nodes
+  )
+  path "/etc/elasticsearch/elasticsearch.yml"
   source "elasticsearch.yml.erb"
   owner "elasticsearch"
   group "elasticsearch"
