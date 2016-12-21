@@ -1,12 +1,12 @@
 cluster:
   name: logstash
 
-  node:
-    name: <%= node[:fqdn] %>
+node:
+  name: <%= node[:fqdn] %>
 
-  path:
-    data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
-    logs: /var/log/elasticsearch
+path:
+  data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
+  logs: /var/log/elasticsearch
 
 thread_pool:
   bulk:
