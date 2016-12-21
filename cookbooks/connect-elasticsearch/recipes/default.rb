@@ -28,14 +28,14 @@ service 'elasticsearch' do
   action [ :enable, :start ]
 end
 
-#es_node_config_dir = "/etc/elasticsearch/#{node[:hostname]}"
+es_data_dir = "/usr/share/elasticsearch/data/#{node[:hostname]}"
 
-#directory es_node_config_dir do
-#  owner "elasticsearch"
-#  group "elasticsearch"
-#  mode "0755"
-#  recursive true
-#end
+directory es_data_dir do
+  owner "elasticsearch"
+  group "elasticsearch"
+  mode "0755"
+  recursive true
+end
 
 template "elasticsearch.yml" do
   variables(

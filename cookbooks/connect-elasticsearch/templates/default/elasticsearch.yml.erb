@@ -1,14 +1,15 @@
 cluster:
-	name: logstash
-	
-node:
-	name: <%= node[:fqdn] %>
-	
-path:
-	data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
-	
-threadpool:
-	bulk:
-		queue_size: 3000
+  name: logstash
+
+  node:
+    name: <%= node[:fqdn] %>
+
+  path:
+    data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
+    logs: /var/log/elasticsearch
+
+thread_pool:
+  bulk:
+    queue_size: 3000
 
 discovery.zen.ping.unicast.hosts: <%= @cluster_nodes %>
