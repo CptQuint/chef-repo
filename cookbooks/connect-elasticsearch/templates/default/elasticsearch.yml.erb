@@ -4,6 +4,9 @@ cluster:
 node:
   name: <%= node[:fqdn] %>
 
+network:
+  host: <%= node[:ipaddress] %>
+
 path:
   data: /usr/share/elasticsearch/data/<%= node[:hostname] %>
   logs: /var/log/elasticsearch
