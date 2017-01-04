@@ -44,6 +44,21 @@ cookbook_file "/etc/logstash/conf.d/10-syslog-filter.conf" do
   mode "0644"
 end
 
+cookbook_file "/etc/logstash/conf.d/15-asyncerror.conf" do
+  source "15-asyncerror.conf"
+  mode "0644"
+end
+
+cookbook_file "/etc/logstash/conf.d/16-asyncaccess.conf" do
+  source "15-asyncaccess.conf"
+  mode "0644"
+end
+
+cookbook_file "/etc/logstash/conf.d/17-daemonlog.conf" do
+  source "17-daemonlog.conf"
+  mode "0644"
+end
+
 cookbook_file "/etc/logstash/conf.d/30-elasticsearch-output.conf" do
   source "30-elasticsearch-output.conf"
   mode "0644"
