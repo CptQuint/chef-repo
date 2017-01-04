@@ -45,12 +45,12 @@ cookbook_file "/etc/logstash/conf.d/10-syslog-filter.conf" do
 end
 
 cookbook_file "/etc/logstash/conf.d/15-asyncerror.conf" do
-  source "15-asyncerror.conf"
+  source "15-asycerror.conf"
   mode "0644"
 end
 
 cookbook_file "/etc/logstash/conf.d/16-asyncaccess.conf" do
-  source "15-asyncaccess.conf"
+  source "16-asyncaccess.conf"
   mode "0644"
 end
 
