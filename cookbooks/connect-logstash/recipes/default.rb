@@ -26,6 +26,14 @@ service 'logstash' do
   action [ :enable, :start ]
 end
 
+template "02-beats-input.conf" do
+  path "/etc/pki/tls/openssl.cnf"
+  source "openssl.cnf.erb"
+  owner "root"
+  group "root"
+  mode "0644"
+end
+
 execute 'cert_gen' do
   cwd  '/etc/pki/tls'
   command "/usr/bin/openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/#{node[:fqdn]}.key -out certs/#{node[:fqdn]}.crt"
