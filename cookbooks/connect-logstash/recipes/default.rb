@@ -26,7 +26,7 @@ service 'logstash' do
   action [ :enable, :start ]
 end
 
-template "02-beats-input.conf" do
+template "openssl.cnf" do
   path "/etc/pki/tls/openssl.cnf"
   source "openssl.cnf.erb"
   owner "root"
