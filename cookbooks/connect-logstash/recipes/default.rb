@@ -67,6 +67,16 @@ cookbook_file "/etc/logstash/conf.d/17-daemonlog.conf" do
   mode "0644"
 end
 
+cookbook_file "/etc/logstash/conf.d/21-json-nginx-access.conf" do
+  source "21-json-nginx-access.conf"
+  mode "0644"
+end
+
+cookbook_file "/etc/logstash/conf.d/22-json-nginx-error.conf" do
+  source "22-json-nginx-error.conf"
+  mode "0644"
+end
+
 cookbook_file "/etc/logstash/conf.d/30-elasticsearch-output.conf" do
   source "30-elasticsearch-output.conf"
   mode "0644"
