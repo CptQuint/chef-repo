@@ -38,7 +38,7 @@ execute 'cert_gen' do
   cwd  '/etc/pki/tls'
   command "/usr/bin/openssl req -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/#{node[:fqdn]}.key -out certs/#{node[:fqdn]}.crt"
   not_if do
-    File.exist?('/etc/pki/tls/certs/ch-lv-lgstsh-ls01.connect-distribution.co.uk.crt')
+    File.exist?("/etc/pki/tls/certs/#{node[:fqdn]}.crt")
   end
 end
 
